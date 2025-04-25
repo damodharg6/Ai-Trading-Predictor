@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# API keys and config
+.env
+apikey.txt
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
