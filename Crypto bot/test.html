@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Falling Crypto Coins</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #f2f2f2;
+    }
+
+    .coin {
+      position: fixed;
+      top: -60px;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 1000;
+      animation: fall linear;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const coinImages = [
+      'https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=029',
+      'https://cryptologos.cc/logos/ethereum-eth-logo.png?v=029',
+      'https://cryptologos.cc/logos/tether-usdt-logo.png?v=029',
+      'https://cryptologos.cc/logos/binance-coin-bnb-logo.png?v=029',
+      'https://cryptologos.cc/logos/cardano-ada-logo.png?v=029',
+      'https://cryptologos.cc/logos/ripple-xrp-logo.png?v=029',
+    ];
+
+    function createCoin() {
+      const coin = document.createElement('div');
+      coin.classList.add('coin');
+      const image = coinImages[Math.floor(Math.random() * coinImages.length)];
+      coin.style.backgroundImage = `url(${image})`;
+      coin.style.left = `${Math.random() * 100}%`;
+      coin.style.animationDuration = `${2 + Math.random() * 3}s`;
+      document.body.appendChild(coin);
+
+      setTimeout(() => coin.remove(), 5000);
+    }
+
+    setInterval(createCoin, 500);
+  </script>
+</body>
+</html>
